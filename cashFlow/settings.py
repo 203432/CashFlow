@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'categorias',
     'Login',
     'flujoEfectivo',
+    'Indicadores',
 ]
 
 REST_FRAMEWORK = {
@@ -93,9 +94,9 @@ WSGI_APPLICATION = 'cashFlow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cashflow',
+        'NAME': 'CashFlow',
         'USER':'postgres',
-        'PASSWORD':'greggrulzok',
+        'PASSWORD':'trolaso1928',
         'HOST':'localhost',
         'PORT':'5432'
     }
