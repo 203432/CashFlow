@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-xcqp$-9f@xrttc9*qy$i2f%#9vnfl2pbx-+620w^3!@vn+$y)=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*'
+]
 
 
 # Application definition
@@ -37,21 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #  Instalaciones realizadas 
-     'rest_framework',
-     'rest_framework.authtoken',
-
     #  Componentes creados
     'categorias',
     'Login',
     'flujoEfectivo',
     'Indicadores',
+
+    #  Instalaciones realizadas 
+     'rest_framework',
+     'rest_framework.authtoken',
+     'corsheaders',
 ]
 
 REST_FRAMEWORK = {
-   'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.AllowAny',),
-    'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
+   'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.IsAuthenticated',),
+   'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
     # 'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework_simplejwt.authentication.JWTAuthentication',),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100
@@ -65,6 +67,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'cashFlow.urls'
@@ -96,7 +103,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'CashFlow',
         'USER':'postgres',
-        'PASSWORD':'trolaso1928',
+        'PASSWORD':'Nintendo64',
         'HOST':'localhost',
         'PORT':'5432'
     }
