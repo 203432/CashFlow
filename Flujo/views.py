@@ -1,4 +1,7 @@
 from django.shortcuts import render
+
+# Create your views here.
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,10 +10,10 @@ import os.path
 from pathlib import Path
 
 # importaciones de modelos agregados
-from flujoEfectivo.models import FlujoEfec
+from Flujo.models import FlujoEfec
 
 # importaciones de serializadores
-from flujoEfectivo.serializers import FlujoEfecSerializer
+from Flujo.serializers import FlujoEfecSerializer
 
 # Create your view here.
 

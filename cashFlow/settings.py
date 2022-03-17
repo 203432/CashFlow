@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     #  Componentes creados
     'categorias',
     'Login',
-    'flujoEfectivo',
+    'Flujo',
     'Indicadores',
 
     #  Instalaciones realizadas 
