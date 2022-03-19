@@ -1,8 +1,10 @@
+from email.policy import default
 from django.db import models
 
 class Categoria(models.Model):
-    nombre_categoria = models.CharField(max_length=50, null=False)
-    clasificacion = models.CharField(max_length=50, null=False)
+    subCategoria= models.CharField(max_length=50, null=False)
+    categoria = models.CharField(max_length=50, null=False)
+    tipo = models.CharField(max_length=50, null=False, default="")
 
     class Meta:
         managed: True

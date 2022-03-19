@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework import exceptions
 import os.path
 from pathlib import Path
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 # importaciones de modelos agregados
 from categorias.models import Categoria 
@@ -14,11 +17,14 @@ from categorias.serializers import CategoriaSerializer
 
 # Create your views here.
 
+        
+
 class CategoriaList(APIView):
     def get(self, request, format=None):
         queryset = Categoria.objects.all()
         serializer = CategoriaSerializer(queryset, many = True, context = {'request':request})
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
 
     def post(self, request):
         serializer = CategoriaSerializer(data=request.data)
@@ -63,3 +69,15 @@ class CategoriaDetail(APIView):
              categoria.delete()
              return Response("Dato eliminado",status=status.HTTP_204_NO_CONTENT)
          return Response("Dato no encontrado",status = status.HTTP_400_BAD_REQUEST) 
+
+class CategoriaEntrada(generics.ListAPIView):
+    def get(self, request, format=None):
+        queryset = Categoria.objects.filter(tipo = "Entrada")
+        serializer = CategoriaSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class CategoriaSalida(generics.ListAPIView):
+    def get(self, request, format=None):
+        queryset = Categoria.objects.filter(tipo="Salida")
+        serializer = CategoriaSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)

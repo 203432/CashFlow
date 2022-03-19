@@ -10,6 +10,7 @@ import os.path
 from pathlib import Path
 
 # importaciones de modelos agregados
+from categorias.models import Categoria
 from Flujo.models import FlujoEfec
 
 # importaciones de serializadores
@@ -27,7 +28,8 @@ class FlujoEfecList(APIView):
         serializer = FlujoEfecSerializer(data=request.data)
         if serializer.is_valid():
             validated_data = serializer.validated_data
-            # Convertir y guardar el modelo
+            # Convertir y guardar el mo
+            # delo
             flujo = FlujoEfec(**validated_data)
             flujo.save()
             serializer_response = FlujoEfecSerializer(flujo)
