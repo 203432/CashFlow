@@ -6,6 +6,8 @@ class Categoria(models.Model):
     categoria = models.CharField(max_length=50, null=False)
     tipo = models.CharField(max_length=50, null=False, default="")
 
+
+
     class Meta:
         managed: True
         db_table: 'Categoria'

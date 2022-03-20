@@ -7,4 +7,5 @@ from Indicadores.models import tableIndi
 class indicadoresSerializer(serializers.ModelSerializer):
     class Meta:
         model =   tableIndi
-        fields = ('pk','indicador','numSemana','monto', 'Razon')
+        fields = ('pk','indicador','numSemana','monto', 'Razon', 'fecha', 'only_month')
+
