@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FlujoefectivoConfig(AppConfig):
+class FlujoConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'flujoEfectivo'
+    name = 'Flujo'

@@ -1,4 +1,7 @@
 from django.shortcuts import render
+
+# Create your views here.
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,10 +10,11 @@ import os.path
 from pathlib import Path
 
 # importaciones de modelos agregados
-from flujoEfectivo.models import FlujoEfec
+from categorias.models import Categoria
+from Flujo.models import FlujoEfec
 
 # importaciones de serializadores
-from flujoEfectivo.serializers import FlujoEfecSerializer
+from Flujo.serializers import FlujoEfecSerializer
 
 # Create your view here.
 
@@ -24,7 +28,8 @@ class FlujoEfecList(APIView):
         serializer = FlujoEfecSerializer(data=request.data)
         if serializer.is_valid():
             validated_data = serializer.validated_data
-            # Convertir y guardar el modelo
+            # Convertir y guardar el mo
+            # delo
             flujo = FlujoEfec(**validated_data)
             flujo.save()
             serializer_response = FlujoEfecSerializer(flujo)

@@ -3,9 +3,9 @@ from rest_framework import routers, serializers, viewsets
 
 #importacion do modelos
 
-from flujoEfectivo.models import FlujoEfec
+from Flujo.models import FlujoEfec
 
 class FlujoEfecSerializer(serializers.ModelSerializer):
     class Meta:
         model = FlujoEfec
-        fields = ('pk','fecha','descripcion','tipo_flujo','categoria')
+        fields = ('pk','fecha','descripcion','tipo_flujo','id_categoria', 'cantidad', 'only_month')

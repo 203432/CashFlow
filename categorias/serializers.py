@@ -7,4 +7,4 @@ from categorias.models import Categoria
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        fields = ('pk','nombre_categoria','clasificacion')
+        fields = ('pk','subCategoria','categoria', 'tipo',)
