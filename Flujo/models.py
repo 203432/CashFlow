@@ -15,5 +15,3 @@ class FlujoEfec(models.Model):
     @property
     def only_month(self):
         return self.fecha.strftime('%m')
-
-    
