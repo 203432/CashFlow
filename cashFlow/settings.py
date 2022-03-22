@@ -108,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'CashFlow',
         'USER':'postgres',
-        'PASSWORD':'greggrulzok',
+        'PASSWORD':'Nintendo64',
         'HOST':'localhost',
         'PORT':'5432'
     }

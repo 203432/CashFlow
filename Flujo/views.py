@@ -58,3 +58,9 @@ class FlujoEfecDetail(APIView):
              datas = serializer.data
              return Response(datas, status = status.HTTP_201_CREATED)
          return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
+
+class FlujoEfeCatego(APIView):
+    def get(self, request, format=None, *args, **kwargs):
+        queryset = FlujoEfec.objects.select_related('id_categoria').all()
+        serializer = FlujoEfecSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
