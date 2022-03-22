@@ -10,13 +10,3 @@ class RegistroView(generics.CreateAPIView):
      permission_classes = (AllowAny,)
      serializer_class = RegisterSerializer
      
-
-
-    # def post(self, request):
-    #     serializer =  RegistroSerializer(data = request.data) 
-    #     if serializer.is_valid():
-    #         user = serializer.save()
-    #         return Response(serializer.data)
-    #     else:
-    #         return Response(serializer.errors)
-# Create your views here.

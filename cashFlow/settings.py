@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'Login',
     'Flujo',
     'Indicadores',
+    'rol',
 
     #  Instalaciones realizadas 
     'django_filters',
      'rest_framework',
      'rest_framework.authtoken',
      'corsheaders',
+
 ]
 
 REST_FRAMEWORK = {
@@ -106,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'CashFlow',
         'USER':'postgres',
-        'PASSWORD':'Nintendo64',
+        'PASSWORD':'greggrulzok',
         'HOST':'localhost',
         'PORT':'5432'
     }
@@ -153,3 +155,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

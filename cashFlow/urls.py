@@ -29,5 +29,6 @@ urlpatterns = [
     re_path(r'^api/v1/', include('Flujo.urls')),
     re_path(r'^api/v1/', include('Register.urls')),
     re_path(r'^api/v1/', include('Indicadores.urls')),
+    re_path(r'^api/v1/', include('rol.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]
