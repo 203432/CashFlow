@@ -1,5 +1,6 @@
 from ast import Num
 from django.db import models
+from datetime import datetime, date
 # Create your models here.
 
 class tableIndi(models.Model):
@@ -12,8 +13,5 @@ class tableIndi(models.Model):
     semana4 = models.IntegerField(default=0)
     Razon=models.CharField(max_length=50, null=False, unique=True)
     monto=models.IntegerField(null=False)
-
-    @property
-    def only_month(self):
-        return self.fecha.strftime('%m')
+    mes = models.CharField(max_length=50, null=False, default= datetime.today().month) 
 

@@ -11,7 +11,5 @@ class FlujoEfec(models.Model):
     tipo_flujo=models.CharField(max_length=50, null=False)
     id_categoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
     cantidad=models.IntegerField(null=False)
+    mes = models.CharField(max_length=50, null=False, default= datetime.today().month) 
 
-    @property
-    def only_month(self):
-        return self.fecha.strftime('%m')

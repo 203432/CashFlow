@@ -56,19 +56,43 @@ class indicadoresDetail(APIView):
 
 
 
-class IndicadorCobrar(generics.ListAPIView):
-     def get(self, request, format=None):
-         queryset = tableIndi.objects.filter(indicador="Cobrar")
-         serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
-         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class IndicadorPagar(generics.ListAPIView):
-     def get(self, request, format=None):
-         queryset = tableIndi.objects.filter(indicador="Pagar")
-         serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
-         return Response(serializer.data, status=status.HTTP_200_OK)
-class IndicadorBanco(generics.ListAPIView):
-     def get(self, request, format=None):
-         queryset = Categoria.objects.filter(tipo="Salida")
-         serializer = CategoriaSerializer(queryset, many = True, context = {'request':request})
-         return Response(serializer.data, status=status.HTTP_200_OK)
+class IndicadorFechaCobrar(APIView):
+    def get_queryset(self):
+        indicadores = tableIndi.objects.all()
+        return indicadores
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+        params_list = params['pk'].split('-')
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = tableIndi.objects.filter(mes = params['pk'], indicador = "Cobrar")
+        serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class IndicadorFechaPagar(APIView):
+    def get_queryset(self):
+        indicadores = tableIndi.objects.all()
+        return indicadores
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+        params_list = params['pk'].split('-')
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = tableIndi.objects.filter(mes = params['pk'], indicador = "Pagar")
+        serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class IndicadorFechaBanco(APIView):
+    def get_queryset(self):
+        indicadores = tableIndi.objects.all()
+        return indicadores
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+        params_list = params['pk'].split('-')
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = tableIndi.objects.filter(mes = params['pk'], indicador = "Banco")
+        serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+

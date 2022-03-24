@@ -8,4 +8,4 @@ from Flujo.models import FlujoEfec
 class FlujoEfecSerializer(serializers.ModelSerializer):
     class Meta:
         model = FlujoEfec
-        fields = ('pk','fecha','descripcion','tipo_flujo','id_categoria', 'cantidad', 'only_month')
+        fields = ('pk','fecha','mes','descripcion','tipo_flujo','id_categoria', 'cantidad')

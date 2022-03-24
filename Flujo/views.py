@@ -1,10 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework import viewsets
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework import exceptions
 import os.path
 from pathlib import Path
@@ -61,6 +62,32 @@ class FlujoEfecDetail(APIView):
 
 class FlujoEfeCatego(APIView):
     def get(self, request, format=None, *args, **kwargs):
-        queryset = FlujoEfec.objects.select_related('id_categoria').all()
+        flujos = FlujoEfec.objects.all().select_related('id_categoria')
+        serializer = FlujoEfecSerializer(flujos, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class FlujoFechaEntrada(APIView):
+    def get_queryset(self):
+        flujos = FlujoEfec.objects.all()
+        return flujos
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+        params_list = params['pk'].split('-')
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = FlujoEfec.objects.filter(mes = params['pk'], tipo_flujo = "Entrada")
+        serializer = FlujoEfecSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class FlujoFechaSalida(APIView):
+    def get_queryset(self):
+        flujos = FlujoEfec.objects.all()
+        return flujos
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+        params_list = params['pk'].split('-')
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = FlujoEfec.objects.filter(mes = params['pk'], tipo_flujo = "Salida")
         serializer = FlujoEfecSerializer(queryset, many = True, context = {'request':request})
         return Response(serializer.data, status=status.HTTP_200_OK)
