@@ -91,3 +91,16 @@ class FlujoFechaSalida(APIView):
         queryset = FlujoEfec.objects.filter(mes = params['pk'], tipo_flujo = "Salida")
         serializer = FlujoEfecSerializer(queryset, many = True, context = {'request':request})
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class FlujoFilter (APIView):
+    def get_queryset(self):
+        indicadores = FlujoEfec.objects.all()
+        return indicadores
+    
+    def get(self, request,*args ,**kwargs):
+        params = kwargs
+
+        # queryset = FlujoEfec.objects.filter(mes = params_list[0], tipo_flujo = params_list[1])
+        queryset = FlujoEfec.objects.filter(subCategoria = "Efectivo")
+        serializer = FlujoEfecSerializer(queryset, many = True, context = {'request':request})
+        return Response(serializer.data, status=status.HTTP_200_OK)

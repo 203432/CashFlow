@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from django.conf.urls import include
 
 # Importacion de la vista
-from Flujo.views import FlujoEfecList, FlujoEfecDetail, FlujoEfeCatego, FlujoFechaEntrada, FlujoFechaSalida
+from Flujo.views import FlujoEfecList, FlujoEfecDetail, FlujoEfeCatego, FlujoFechaEntrada, FlujoFechaSalida,FlujoFilter
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     re_path(r'^flujo/(?P<pk>\d+)$', FlujoEfecDetail.as_view()),
     re_path(r'^flujoentrada/(?P<pk>\d+)$', FlujoFechaEntrada.as_view()),
     re_path(r'^flujosalida/(?P<pk>\d+)$', FlujoFechaSalida.as_view()),
+    re_path(r'^flujosub/$', FlujoFilter.as_view()),
 ]

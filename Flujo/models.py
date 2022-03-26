@@ -10,6 +10,6 @@ class FlujoEfec(models.Model):
     descripcion=models.CharField(max_length=100, null=False)
     tipo_flujo=models.CharField(max_length=50, null=False)
     id_categoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    cantidad=models.IntegerField(null=False)
+    cantidad=models.FloatField(null=False)
     mes = models.CharField(max_length=50, null=False, default= datetime.today().month) 
 
