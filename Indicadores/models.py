@@ -13,5 +13,4 @@ class tableIndi(models.Model):
     semana4 = models.IntegerField(default=0)
     Razon=models.CharField(max_length=50, null=False, unique=True)
     monto=models.IntegerField(null=False)
-    mes = models.CharField(max_length=50, null=False, default= datetime.today().month) 
-
+    mes = models.CharField(max_length=50, null=False, default= datetime.today().month)

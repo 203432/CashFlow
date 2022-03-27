@@ -95,4 +95,3 @@ class IndicadorFechaBanco(APIView):
         queryset = tableIndi.objects.filter(mes = params['pk'], indicador = "Banco")
         serializer = indicadoresSerializer(queryset, many = True, context = {'request':request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-
